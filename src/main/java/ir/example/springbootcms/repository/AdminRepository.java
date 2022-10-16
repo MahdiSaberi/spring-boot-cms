@@ -7,9 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdminRepository extends BaseUserRepository<Admin> {
-    @Override
-    Admin getByUsername(String username);
 
-    @Override
-    Admin getByUsernameAndPassword(String username, String password);
 }

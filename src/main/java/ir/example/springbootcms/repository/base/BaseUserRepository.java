@@ -8,4 +8,5 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface BaseUserRepository<T extends User> extends BaseEntityRepository<T,Long> {
     T getByUsername(String username);
     T getByUsernameAndPassword(String username, String password);
+    <P> P getByUsername(String username, Class<P> pClass);
 }

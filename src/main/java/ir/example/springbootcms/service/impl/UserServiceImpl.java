@@ -3,7 +3,9 @@ package ir.example.springbootcms.service.impl;
 import ir.example.springbootcms.base.service.impl.BaseServiceImpl;
 import ir.example.springbootcms.entity.User;
 import ir.example.springbootcms.repository.UserRepository;
+import ir.example.springbootcms.repository.base.BaseUserRepository;
 import ir.example.springbootcms.service.UserService;
+import ir.example.springbootcms.service.base.impl.BaseUserServiceImpl;
 import ir.example.springbootcms.service.dto.UserSearch;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl extends BaseServiceImpl<User,Long, UserRepository> implements UserService {
+public class UserServiceImpl extends BaseUserServiceImpl<User, UserRepository> implements UserService {
 
     public UserServiceImpl(UserRepository userRepository) {
         super(userRepository);
@@ -24,7 +26,7 @@ public class UserServiceImpl extends BaseServiceImpl<User,Long, UserRepository> 
 
     @Override
     public User getByUsername(String username) {
-        return repository.findByUsername(username);
+        return repository.getByUsername(username);
     }
 
     @Override
