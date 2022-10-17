@@ -31,5 +31,12 @@ public class User extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private String UserType;
+    private String userType;
+
+    public User(Long aLong, String firstName, String username, String userType) {
+        super(aLong);
+        this.firstName = firstName;
+        this.username = username;
+        this.userType = userType;
+    }
 }

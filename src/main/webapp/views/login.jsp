@@ -45,7 +45,7 @@
             url: '/login-process?username=' + userInfo.username + "&password=" + userInfo.password,
             contentType: 'application/json',
             success: function (response) {
-                window.location.href = '/admin-panel';
+                window.location.href = '/admin';
             },
             error: function (jqXHR, exception) {
                 document.getElementById('error').innerText

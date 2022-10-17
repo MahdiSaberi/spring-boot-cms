@@ -15,4 +15,9 @@ public class PageController {
     public ModelAndView login(){
         return new ModelAndView("login");
     }
+
+    @GetMapping("/access-denied")
+    public ModelAndView getAccessDenied() {
+        return new ModelAndView("403");
+    }
 }
