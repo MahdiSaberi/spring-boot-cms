@@ -42,7 +42,7 @@ public class SecurityAccessFilter extends OncePerRequestFilter {
     private String[] getPermitAllPaths() {
         return new String[]{
                 "/assets", "/login", "/login-process",
-                "/access-denied"
+                "/access-denied","/swagger","/v2/api-docs","/webjars"
         };
     }
 
