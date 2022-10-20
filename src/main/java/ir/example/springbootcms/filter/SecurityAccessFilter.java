@@ -20,15 +20,13 @@ public class SecurityAccessFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, ServletException, IOException {
 //        /assets/login.css
         String servletPath = request.getServletPath();
-        if (
-                Arrays.stream(getPermitAllPaths())
-                        .anyMatch(path -> servletPath.equals(path) || servletPath.startsWith(path))
-        ) {
+        if (Arrays.stream(getPermitAllPaths()).anyMatch(path -> servletPath.equals(path) || servletPath.startsWith(path)))
+        {
             filterChain.doFilter(request, response);
-        } else if (
-                Arrays.stream(getAdminPermitPaths())
-                        .anyMatch(path -> servletPath.equals(path) || servletPath.startsWith(path))
-        ) {
+        }
+
+        else if (Arrays.stream(getAdminPermitPaths()).anyMatch(path -> servletPath.equals(path) || servletPath.startsWith(path)))
+        {
             User currentUser = SecurityContext.getCurrentUser();
             if (currentUser == null || !UserType.ADMIN.name().equals(currentUser.getUserType())) {
                 response.sendRedirect("/access-denied");
@@ -36,6 +34,7 @@ public class SecurityAccessFilter extends OncePerRequestFilter {
                 filterChain.doFilter(request, response);
             }
         }
+        filterChain.doFilter(request, response);
 
     }
 
